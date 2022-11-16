@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="jquery-3.6.1.min.js"></script>
+        <!-- can also source in via web address <script src="jquery-3.1.1.min.js"></script> -->
+        <script type="text/javascript" src="employee.js"></script> 
+    </head>
+    <body>
+        <h1>Add Employee</h1>
+        <!-- create inputs for _employee first name, last name, ID number, job title, annual salary_. -->
+        <input placeholder="First Name" id="first-name"/>
+        <input placeholder="Last Name" id="last-name"/>
+        <input placeholder="Employee ID" id="employee-id"/>
+        <input placeholder="Job Title" id="job-title"/>
+        <input placeholder="Annual Salary" id="annual-salary"/>
+        <br>
+        <br>
+        <button id="submit-button">Submit Employee Info</button>
+
+        <div>
+        <h3>Employees</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Employee ID</th>
+                        <th>Job Title</th>
+                        <th>Annual Salary</th>
+                    </tr>
+                </thead>
+                <tbody id="employee-table">
+                </tbody>
+            </table>
+        </div>
+        
+        
+    </body>
+</html>
