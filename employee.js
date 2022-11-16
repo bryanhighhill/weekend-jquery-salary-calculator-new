@@ -3,6 +3,7 @@ console.log('HELLO');
 $(readyNow);
 
 let employees = [];
+let totalMonthlyCost = 0;
 
 function readyNow() {
     console.log('ready now');
@@ -46,4 +47,14 @@ function createEmployee() {
     $('#employee-id').val('')
     $('#job-title').val('')
     $('#annual-salary').val('')
+    monthlyCosts();
+}
+
+function monthlyCosts(){
+    for (let i=0; i < employees.length; i++) {
+        let salary = employees[i].annual_salary;
+        totalMonthlyCost += salary;
+    }
+    $('#monthly-costs').empty
+    $('#monthly-costs').append(Number(totalMonthlyCost));
 }
