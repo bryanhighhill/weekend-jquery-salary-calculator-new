@@ -8,6 +8,7 @@ let totalMonthlyCost = 0;
 function readyNow() {
     console.log('ready now');
     $('#submit-button').on('click', createEmployee);
+    $('#employee-table').on('click', '.remove-employee', removeEmployee);
 }
 //COLLECT INPUT VALUES
 function createEmployee() {
@@ -29,9 +30,10 @@ function createEmployee() {
     console.log(employees);
 //STORE INFO IN OBJECT ARRAY
     employees.push(employeeObject);
-//APPEND INFO TO DOM
+//APPEND INFO TO DOM;
+    totalMonthlyCost += annualSalary;
     let employeeDom = $(`
-        <tr>
+        <tr data-employee-salary="${annualSalary}">
             <td>${firstName}</td>
             <td>${lastName}</td>
             <td>${employeeId}</td>
@@ -42,19 +44,23 @@ function createEmployee() {
     `)
     $('#employee-table').append(employeeDom);
 //CLEAR INPUT FIELDS
-    $('#first-name').val('')
-    $('#last-name').val('')
-    $('#employee-id').val('')
-    $('#job-title').val('')
-    $('#annual-salary').val('')
+    $('#first-name').val('');
+    $('#last-name').val('');
+    $('#employee-id').val('');
+    $('#job-title').val('');
+    $('#annual-salary').val('');
     monthlyCosts();
 }
 
 function monthlyCosts(){
-    for (let i=0; i < employees.length; i++) {
-        let salary = employees[i].annual_salary;
-        totalMonthlyCost += salary;
-    }
-    $('#monthly-costs').empty
+    $('#monthly-costs').empty();
     $('#monthly-costs').append(Number(totalMonthlyCost));
+}
+
+function removeEmployee() {
+    let data = $(this).parent().parent().data('employeeSalary');
+    console.log(data);
+    $(this).parent().parent().remove();
+    totalMonthlyCost -= data;
+    monthlyCosts();
 }
