@@ -55,6 +55,11 @@ function createEmployee() {
 function monthlyCosts(){
     $('#monthly-costs').empty();
     $('#monthly-costs').append(Number(totalMonthlyCost));
+    if (totalMonthlyCost > 20000) {
+        $('#monthly-costs').css('background-color', 'red')
+    } else {
+        $('#monthly-costs').css('background-color', 'green')
+    }
 }
 
 function removeEmployee() {
